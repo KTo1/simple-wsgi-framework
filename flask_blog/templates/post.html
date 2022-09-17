@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<div id="content" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+    <!-- insert the page content here -->
+      <h4 class="card-title">{{ post.title }}</h4>
+      <small>Опубликовано {{ post.date_posted.strftime('%A, %d %B %Y %I:%M %p') }}</small>
+      <br>
+      <br>
+      <p class="card-text">{{ post.content }}</p>
+
+
+        {% if post.author == current_user %}
+        <div style="float: right" class="form_settings">
+                  <form action="{{ url_for('posts.update_post', post_id=post.id) }}">
+                    <p><span>&nbsp;</span><input class="submit" type="submit" value="Обновить"></p>
+                  </form>
+                  <form action="{{ url_for('posts.delete_post', post_id=post.id) }}" method="POST">
+                    <p><span>&nbsp;</span><input onclick="return confirm('Дествительно удалить запись?')" class="submit" type="submit" value="Удалить"></p>
+                  </form>
+        </div>
+        {% endif %}
+
+
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<div id="content">
+    <!-- insert the page content here -->
+    <h1>Регистрация</h1>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+
+        <div class="form_settings">
+
+            <p><span>{{ form.username.label(class="form-control-label") }}</span>{{ form.username(class="form-control form-control-lg") }}</p>
+                {% if form.username.errors %}
+                    <p><span>Ошибки: </span>
+                        {% for error in form.username.errors %} <span>{{ error }}</span> {% endfor %}
+                    </p>
+                {% endif %}
+            <p><span>{{ form.email.label(class="form-control-label") }}</span>{{ form.email(class="form-control form-control-lg") }}</p>
+                {% if form.email.errors %}
+                    <p><span>Ошибки: </span>
+                        {% for error in form.email.errors %} <span>{{ error }}</span> {% endfor %}
+                    </p>
+                {% endif %}
+            <p><span>{{ form.password.label(class="form-control-label") }}</span>{{ form.password(class="form-control form-control-lg") }}</p>
+                {% if form.password.errors %}
+                    <p><span>Ошибки: </span>
+                        {% for error in form.password.errors %} <span>{{ error }}</span> {% endfor %}
+                    </p>
+                {% endif %}
+            <p><span>{{ form.confirm_password.label(class="form-control-label") }}</span>{{ form.confirm_password(class="form-control form-control-lg") }}</p>
+                {% if form.confirm_password.errors %}
+                    <p><span>Ошибки: </span>
+                        {% for error in form.confirm_password.errors %} <span>{{ error }}</span> {% endfor %}
+                    </p>
+                {% endif %}
+            <p style="padding-top: 15px"><span>&nbsp;</span>{{ form.submit(class="submit") }}</p>
+
+        </div>
+    </form>
+</div>
+{% endblock %}
